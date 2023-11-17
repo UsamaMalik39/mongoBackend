@@ -20,7 +20,6 @@ const processJob = async () => {
     const job = JSON.parse(jobString);
     job.status = 'processing';
 
-    // Simulate job processing - Replace this with your actual job processing logic
     await new Promise((resolve) => setTimeout(resolve, 5000));
 
     job.status = 'completed';

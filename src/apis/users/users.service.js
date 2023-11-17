@@ -5,7 +5,7 @@ const client = require('../../redis');
 module.exports = {
   getAllUsers: async (query) => {
     try {
-      await client.connect()
+      
       const cacheKey = `getAllUsers:${JSON.stringify(query)}`;
       const cachedData = await client.get(cacheKey);
 
@@ -24,15 +24,17 @@ module.exports = {
       return users;
     } catch (error) {
       console.error(`Error in getAllUsers: ${error.message}`);
+      
       throw error;
     }finally {
-      client.quit();
+      
     }
   },
 
   getUserById: async (userId) => {
     try {
-      await client.connect()
+      
+      
       const cacheKey = `getUserById:${userId}`;
       const cachedData = await client.get(cacheKey);
 
@@ -46,14 +48,15 @@ module.exports = {
         return null;
       }
 
-      await client.setex(cacheKey, 3600, JSON.stringify(user));
+      await client.setEx(cacheKey, 3600, JSON.stringify(user));
 
       return user;
     } catch (error) {
       console.error(`Error in getUserById: ${error.message}`);
+      
       throw error;
     }finally {
-      client.quit();
+      
     }
   },
 
@@ -94,6 +97,7 @@ module.exports = {
 
       const deletedUser = await User.updateOne({ _id: userId }, { isDeleted: true });
       return deletedUser;
+
     } catch (error) {
       console.error(`Error in deleteUser: ${error.message}`);
       throw error;
@@ -103,7 +107,7 @@ module.exports = {
 
 async function clearCache(pattern) {
   try{
-    await client.connect()
+    
 
     const keys = await client.keys(pattern);
   
@@ -112,9 +116,10 @@ async function clearCache(pattern) {
     }
   } catch(err){
     console.error(`Error in clearCache: ${error.message}`);
+    
     throw error;
   } finally {
-    client.quit();
+    
   }
 
   
