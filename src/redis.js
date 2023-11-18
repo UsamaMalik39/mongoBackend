@@ -20,7 +20,7 @@ const updateIpAddress = async () => {
 };
 
 
-updateIpAddress();
+// updateIpAddress();
 const client = redis.createClient(redisUrl);
 
 client.on('error', (err) => {
