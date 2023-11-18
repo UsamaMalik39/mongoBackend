@@ -22,22 +22,6 @@ const userSchema = new mongoose.Schema(
         required : true,
         default : false
     } 
-    // email: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    //   trim: true,
-    // },
-    // firstName: {
-    //   type: String,
-    //   required: true,
-    //   trim: true,
-    // },
-    // lastName: {
-    //   type: String,
-    //   required: true,
-    //   trim: true,
-    // },
   },
   { collection: 'Users' , timestamps : true },
   {
