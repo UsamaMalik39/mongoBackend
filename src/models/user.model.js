@@ -12,6 +12,11 @@ const userSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+    gender: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     isDeleted : {
         type : Boolean,
         required : true,
