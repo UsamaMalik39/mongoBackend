@@ -21,7 +21,7 @@ const updateIpAddress = async () => {
 
 
 // updateIpAddress();
-const client = redis.createClient(redisUrl);
+const client = redis.createClient({ host: '128.199.135.131', port: 6379 });
 
 client.on('error', (err) => {
     console.error(`Redis Error: ${err}`);
